@@ -33,7 +33,7 @@
   }
 </style>
 
-<h1>?? Status ??</h1>
+<h1>&#x1F476; Status &#x1F37C;</h1>
 <Field label="ETA" value={timeLeft} />
 <Field label="Name" value={config.name} />
 <Field label="Time of birth" value={config.timeOfBirth} />
