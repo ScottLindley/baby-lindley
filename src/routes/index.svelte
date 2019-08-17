@@ -15,10 +15,9 @@
   };
 
   const fetchConfig = () =>
-    fetch("http://localhost:1337/config").then(async resp => {
+    fetch("http://babylindley.com/config").then(async resp => {
       const json = await resp.json();
       config = json;
-      console.log({ config });
     });
 
   let configPromise = fetchConfig();

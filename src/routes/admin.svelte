@@ -4,7 +4,7 @@
   let configPromise = Promise.resolve();
 
   let postConfig = config => {
-    configPromise = fetch("http://localhost:1337/config", {
+    configPromise = fetch("http://babylindley.com/config", {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },
