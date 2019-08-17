@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "start": "node __sapper__/build"
+    "start": "forever start __sapper__/build"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -23,6 +23,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "forever": "^1.0.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^1.12.0",
     "rollup-plugin-babel": "^4.0.2",
