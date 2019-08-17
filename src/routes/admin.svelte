@@ -1,5 +1,5 @@
 <script>
-  import ConfigForm from "./ConfigForm.svelte";
+  import ConfigForm from "../components/ConfigForm.svelte";
 
   let configPromise = Promise.resolve();
 
@@ -14,19 +14,8 @@
 </script>
 
 <style>
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 24px;
-    color: black;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
   #main-container {
+    color: black;
     width: 100%;
     height: 100%;
     position: absolute;

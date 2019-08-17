@@ -1,0 +1,9 @@
+{
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "name": "Baby Status Page",
+  "short_name": "Baby Status",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": []
+}

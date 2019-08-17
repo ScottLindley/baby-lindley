@@ -1,5 +1,7 @@
 <script>
-  import Home from "./Home.svelte";
+  import fetch from "node-fetch";
+
+  import Home from "../components/Home.svelte";
 
   let config = {
     name: "???",
@@ -21,7 +23,7 @@
 
   let configPromise = fetchConfig();
 
-  window.setInterval(fetchConfig, 5000);
+  setInterval(fetchConfig, 5000);
 
   let genderColorMap = {
     girl: "pink",
@@ -30,18 +32,6 @@
 </script>
 
 <style>
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 24px;
-    color: white;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
   #main-container {
     width: 100%;
     height: 100%;

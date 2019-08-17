@@ -5,8 +5,6 @@
 
   export let config;
 
-  console.log({ homeConfig: config });
-
   let timeLeft;
 
   const computeTimeLeft = () => {
@@ -15,7 +13,7 @@
 
   computeTimeLeft();
 
-  window.setInterval(computeTimeLeft, 1000);
+  setInterval(computeTimeLeft, 1000);
 </script>
 
 <style>

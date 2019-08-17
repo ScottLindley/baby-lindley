@@ -26,6 +26,12 @@
 </script>
 
 <style>
+  form {
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+  }
+
   #gender {
     display: flex;
     flex-direction: row;
@@ -34,6 +40,12 @@
   #gender > label {
     margin-right: 16px;
     margin-left: 16px;
+  }
+
+  input {
+    height: 34px;
+    font-size: xx-large;
+    margin-bottom: 16px;
   }
 </style>
 
@@ -73,5 +85,5 @@
     Password:
     <input type="text" name="password" autocomplete="off" />
   </label>
-  <input type="submit" name="submit" value="submit" />
+  <input id="submit-btn" type="submit" name="submit" value="submit" />
 </form>

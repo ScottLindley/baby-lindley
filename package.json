@@ -1,30 +1,37 @@
 {
   "name": "baby-lindley",
   "version": "1.0.0",
-  "devDependencies": {
-    "npm-run-all": "^4.1.5",
-    "rollup": "^1.12.0",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^4.0.4",
-    "svelte": "^3.0.0"
+  "scripts": {
+    "dev": "sapper dev",
+    "build": "sapper build --legacy",
+    "start": "node __sapper__/build"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "compression": "^1.7.1",
     "express": "^4.17.1",
     "install": "^0.13.0",
     "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1",
-    "npm": "^6.10.3"
+    "request": "^2.88.0",
+    "sirv": "^0.4.0"
   },
-  "scripts": {
-    "build": "rollup -c",
-    "build:admin": "rollup -c rollup_admin.config.js",
-    "autobuild": "rollup -c -w",
-    "autobuild:admin": "rollup -c rollup_admin.config.js -w",
-    "start": "npm run build & npm run build:admin & node server.js",
-    "start:dev": "npm run autobuild & npm run autobuild:admin & nodemon server.js"
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.12.0",
+    "rollup-plugin-babel": "^4.0.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-svelte": "^5.0.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "sapper": "^0.27.0",
+    "svelte": "^3.0.0"
   }
 }
