@@ -4,13 +4,32 @@
 
   let configPromise = Promise.resolve();
 
+  const parseJSON = async resp => {
+    const json = await resp.json();
+    if (json.error) {
+      setTimeout(() => {
+        configPromise = Promise.resolve();
+      }, 2000);
+      throw new Error(json.error);
+    }
+  };
+
   let postConfig = config => {
     configPromise = fetch(`${helpers.getAPIDomain()}/config`, {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(config)
-    });
+    }).then(parseJSON);
+  };
+
+  let clearConfig = password => {
+    configPromise = fetch(`${helpers.getAPIDomain()}/config/clear`, {
+      method: "POST",
+      cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password })
+    }).then(parseJSON);
   };
 </script>
 
@@ -33,8 +52,8 @@
   {#await configPromise}
     <h2>Loading...</h2>
   {:then}
-    <ConfigForm onSubmit={postConfig} />
+    <ConfigForm onSubmit={postConfig} onClear={clearConfig} />
   {:catch error}
-    <h2>oops {error.message}</h2>
+    <h2>oops! {error.message}</h2>
   {/await}
 </div>

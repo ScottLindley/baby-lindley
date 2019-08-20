@@ -18,7 +18,7 @@ if (!fs.existsSync(configPath)) {
   configPath = './src/defaultConfig.json';
 }
 
-const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+let config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
 const app = express();
 
@@ -40,6 +40,19 @@ app.post('/config', (req, res) => {
 
   delete req.body.password;
   Object.assign(config, req.body);
+  fs.writeFileSync('./config.json', JSON.stringify(config, null, 2), 'utf-8');
+  return res.send(config);
+});
+
+app.post('/config/clear', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-cache');
+  const { password } = req.body;
+  if (password !== ADMIN_PASSWORD) {
+    return res.status(401).send({ error: 'password incorrect' });
+  }
+
+  config = JSON.parse(fs.readFileSync('./src/defaultConfig.json', 'utf-8'));
   fs.writeFileSync('./config.json', JSON.stringify(config, null, 2), 'utf-8');
   return res.send(config);
 });
