@@ -1,10 +1,11 @@
 <script>
   import ConfigForm from "../components/ConfigForm.svelte";
+  import helpers from "../helpers/index.js";
 
   let configPromise = Promise.resolve();
 
   let postConfig = config => {
-    configPromise = fetch("http://babylindley.com/config", {
+    configPromise = fetch(`${helpers.getAPIDomain()}/config`, {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },

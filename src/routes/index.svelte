@@ -2,6 +2,7 @@
   import fetch from "node-fetch";
 
   import Home from "../components/Home.svelte";
+  import helpers from "../helpers/index.js";
 
   let config = {
     name: "???",
@@ -15,7 +16,7 @@
   };
 
   const fetchConfig = () =>
-    fetch("http://babylindley.com/config").then(async resp => {
+    fetch(`${helpers.getAPIDomain()}/config`).then(async resp => {
       const json = await resp.json();
       config = json;
     });
