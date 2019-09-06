@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "start": "forever start __sapper__/build"
+    "start": "forever start __sapper__/build",
+    "restart": "npm run build && forever stopall && npm run start"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
