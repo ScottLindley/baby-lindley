@@ -12,11 +12,14 @@
       gender = "boy";
     }
 
+    let confetti = !!elements.confetti.checked;
+
     const omitEmpty = element =>
       element.value === "" ? undefined : element.value;
 
     onSubmit({
       gender,
+      confetti,
       name: omitEmpty(elements.name),
       timeOfBirth: omitEmpty(elements.timeOfBirth),
       weight: omitEmpty(elements.weight),
@@ -82,6 +85,10 @@
   <label>
     Weight:
     <input type="text" name="weight" autocomplete="off" />
+  </label>
+  <label>
+    Confetti:
+    <input type="checkbox" id="confetti" />
   </label>
   <label>
     Update:

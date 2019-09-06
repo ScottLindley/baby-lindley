@@ -1,6 +1,7 @@
 <script>
   import moment from "moment";
 
+  import Confetti from "./Confetti.svelte";
   import Field from "./Field.svelte";
 
   export let config;
@@ -34,4 +35,7 @@
 {/if}
 {#if config.image}
   <img src={config.image} alt="picture of baby" />
+{/if}
+{#if config.confetti}
+  <Confetti />
 {/if}
