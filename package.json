@@ -2,7 +2,7 @@
   "name": "baby-lindley",
   "version": "1.0.0",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "PORT=1337 ADMIN_PASSWORD=password sapper dev",
     "build": "sapper build --legacy",
     "start": "forever start __sapper__/build",
     "restart": "npm run build && forever stopall && npm run start"
