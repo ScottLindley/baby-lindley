@@ -2,6 +2,8 @@
   import ConfigForm from "../components/ConfigForm.svelte";
   import helpers from "../helpers/index.js";
 
+  const API = helpers.getAPIDomain();
+
   let configPromise = Promise.resolve();
 
   const parseJSON = async resp => {
@@ -15,7 +17,7 @@
   };
 
   let postConfig = config => {
-    configPromise = fetch(`${helpers.getAPIDomain()}/config`, {
+    configPromise = fetch(`${API}/config`, {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },
@@ -23,8 +25,15 @@
     }).then(parseJSON);
   };
 
+  let previewConfig = config => {
+    const params = helpers.configToURLParams(config);
+    const url = `${API}?${params}`;
+    var win = window.open(url, "_blank");
+    win.focus();
+  };
+
   let clearConfig = password => {
-    configPromise = fetch(`${helpers.getAPIDomain()}/config/clear`, {
+    configPromise = fetch(`${API}/config/clear`, {
       method: "POST",
       cache: "no-cache",
       headers: { "Content-Type": "application/json" },
@@ -52,7 +61,10 @@
   {#await configPromise}
     <h2>Loading...</h2>
   {:then}
-    <ConfigForm onSubmit={postConfig} onClear={clearConfig} />
+    <ConfigForm
+      onSubmit={postConfig}
+      onClear={clearConfig}
+      onPreview={previewConfig} />
   {:catch error}
     <h2>oops! {error.message}</h2>
   {/await}

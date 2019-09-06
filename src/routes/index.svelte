@@ -19,7 +19,10 @@
   const fetchConfig = () =>
     fetch(`${helpers.getAPIDomain()}/config`).then(async resp => {
       const json = await resp.json();
-      config = json;
+      config = Object.assign(
+        json,
+        helpers.URLParamsToConfig(window.location.search)
+      );
     });
 
   let configPromise = fetchConfig();

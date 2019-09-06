@@ -1,10 +1,12 @@
 <script>
+  import { onMount } from "svelte";
   export let onSubmit = () => {};
+  export let onPreview = () => {};
   export let onClear = () => {};
 
-  let handleSubmit = event => {
-    const elements = event.target.elements;
+  let configForm;
 
+  const buildConfig = elements => {
     let gender;
     if (elements.girl.checked) {
       gender = "girl";
@@ -17,7 +19,7 @@
     const omitEmpty = element =>
       element.value === "" ? undefined : element.value;
 
-    onSubmit({
+    return {
       gender,
       confetti,
       name: omitEmpty(elements.name),
@@ -26,8 +28,24 @@
       update: omitEmpty(elements.update),
       image: omitEmpty(elements.image),
       password: omitEmpty(elements.password)
-    });
+    };
   };
+
+  onMount(() => {
+    configForm.onsubmit = event => {
+      const btnId = event.explicitOriginalTarget.id;
+      const elements = event.target.elements;
+      if (btnId === "submit-btn") {
+        handleSubmit(elements);
+      } else if (btnId === "preview-btn") {
+        handlePreview(elements);
+      }
+      return false;
+    };
+  });
+
+  let handleSubmit = elements => onSubmit(buildConfig(elements));
+  let handlePreview = elements => onPreview(buildConfig(elements));
 
   let handleClear = () => {
     const password = document.getElementById("passwordInput").value;
@@ -62,7 +80,7 @@
   }
 </style>
 
-<form on:submit|preventDefault={handleSubmit}>
+<form bind:this={configForm}>
   <label>
     Name:
     <input type="text" name="name" autocomplete="off" />
@@ -103,6 +121,7 @@
     <input id="passwordInput" type="text" name="password" autocomplete="off" />
   </label>
   <input id="submit-btn" type="submit" name="submit" value="SUBMIT" />
+  <input id="preview-btn" type="submit" value="PREVIEW CONFIG" />
   <input
     id="clear-btn"
     type="button"
