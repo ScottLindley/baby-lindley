@@ -15,6 +15,7 @@
     }
 
     let confetti = !!elements.confetti.checked;
+    let guessesEnabled = !elements.guessesEnabled.checked;
 
     const omitEmpty = element =>
       element.value === "" ? undefined : element.value;
@@ -22,6 +23,7 @@
     return {
       gender,
       confetti,
+      guessesEnabled,
       name: omitEmpty(elements.name),
       timeOfBirth: omitEmpty(elements.timeOfBirth),
       weight: omitEmpty(elements.weight),
@@ -107,6 +109,10 @@
   <label>
     Confetti:
     <input type="checkbox" id="confetti" />
+  </label>
+  <label>
+    Guesses Disabled:
+    <input type="checkbox" id="guessesEnabled" />
   </label>
   <label>
     Update:

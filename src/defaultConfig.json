@@ -6,5 +6,6 @@
   "dueDate": "2019-10-11T00:00:00.000",
   "update": "",
   "image": "https://lh3.googleusercontent.com/_fquFZRC8T5VkTUuMtzMZhioxXu9Vuh7AW93oFXyP2xnWgRS8zC2lWuhsGXpiiWyZvFpHESsO6pTejgfY2ZZ6EVD_x9pOIu7Qx-se2-V1q1kqrXUNLOmgCyu9nhPmOTyytRrXFqaPL0=w2542-h1908-no",
-  "confetti": false
+  "confetti": false,
+  "guessesEnabled": true
 }

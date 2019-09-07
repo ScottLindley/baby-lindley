@@ -3,11 +3,13 @@
 
   import Confetti from "./Confetti.svelte";
   import Field from "./Field.svelte";
+  import GuessButton from "./GuessButton.svelte";
+  import GuessForm from "./GuessForm.svelte";
+  import helpers from "../helpers/index.js";
 
   export let config;
 
   let timeLeft;
-
   const computeTimeLeft = () => {
     timeLeft = moment(config.dueDate).fromNow();
   };
@@ -15,6 +17,22 @@
   computeTimeLeft();
 
   setInterval(computeTimeLeft, 1000);
+
+  let guessFormOpen = false;
+  let openGuessForm = () => {
+    guessFormOpen = true;
+  };
+  let closeGuessForm = () => {
+    guessFormOpen = false;
+  };
+
+  let handleGuessSubmit = guess =>
+    fetch(`${helpers.getAPIDomain()}/guess`, {
+      method: "POST",
+      cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(guess)
+    });
 </script>
 
 <style>
@@ -38,4 +56,10 @@
 {/if}
 {#if config.confetti}
   <Confetti />
+{/if}
+{#if config.guessesEnabled}
+  <GuessButton onClick={openGuessForm} />
+{/if}
+{#if guessFormOpen}
+  <GuessForm onSubmit={handleGuessSubmit} onClose={closeGuessForm} />
 {/if}
