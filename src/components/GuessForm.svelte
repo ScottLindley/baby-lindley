@@ -173,10 +173,15 @@
         </div>
         <label>
           Baby's Name:
-          <input type="text" name="name" autocomplete="off" required />
+          <input
+            class="text-input"
+            type="text"
+            name="name"
+            autocomplete="off"
+            required />
         </label>
         <label>
-          Time of birth:
+          Date/Time of birth:
           <input
             class="text-input"
             type="text"
