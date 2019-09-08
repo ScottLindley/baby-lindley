@@ -157,14 +157,6 @@
       width: 90%;
       height: 70%;
     }
-
-    label {
-      font-size: 1.2em;
-    }
-
-    #submit-btn {
-      font-size: 1.2em;
-    }
   }
 </style>
 
