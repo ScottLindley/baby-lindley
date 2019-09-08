@@ -74,8 +74,7 @@
 
   img {
     grid-row: auto-fit 40%;
-    width: inherit;
-    max-height: 100%;
+    max-height: 60vh;
     justify-self: center;
     border-radius: 5px;
   }
