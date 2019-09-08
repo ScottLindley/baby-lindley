@@ -17,7 +17,6 @@
   };
 
   computeTimeLeft();
-
   setInterval(computeTimeLeft, 1000);
 
   let guessFormOpen = false;
@@ -35,6 +34,11 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(guess)
     });
+
+  let hideContent = true;
+  let showContent = () => {
+    hideContent = false;
+  };
 </script>
 
 <style>
@@ -84,25 +88,27 @@
 </style>
 
 <div class="home-container">
-  <div class="status-container">
-    <h1>&#x1F476; Status &#x1F37C;</h1>
-    <Divider />
-    <Field label="ETA" value={timeLeft} />
-    <Divider />
-    <Field label="Name" value={config.name} />
-    <Divider />
-    <Field label="Time of birth" value={config.timeOfBirth} />
-    <Divider />
-    <Field label="Weight" value={config.weight} />
-    {#if config.update}
+  {#if !hideContent}
+    <div class="status-container">
+      <h1>&#x1F476; Status &#x1F37C;</h1>
       <Divider />
-      <Field label="Update" value={config.update} />
-    {/if}
-  </div>
-  {#if config.image}
-    <img src={config.image} alt="picture of baby" />
+      <Field label="ETA" value={timeLeft} />
+      <Divider />
+      <Field label="Name" value={config.name} />
+      <Divider />
+      <Field label="Time of birth" value={config.timeOfBirth} />
+      <Divider />
+      <Field label="Weight" value={config.weight} />
+      {#if config.update}
+        <Divider />
+        <Field label="Update" value={config.update} />
+      {/if}
+    </div>
   {/if}
-  {#if config.guessesEnabled}
+  {#if config.image}
+    <img on:load={showContent} src={config.image} alt="picture of baby" />
+  {/if}
+  {#if !hideContent && config.guessesEnabled}
     <GuessButton onClick={openGuessForm} />
   {/if}
 </div>
