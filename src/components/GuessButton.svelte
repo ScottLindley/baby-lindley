@@ -4,6 +4,8 @@
 
 <style>
   button {
+    justify-self: center;
+    width: max-content;
     color: black;
     background-color: whitesmoke;
     border-radius: 5px;
@@ -13,12 +15,11 @@
     border: 1px solid black;
     padding: 8px;
     cursor: pointer;
+    grid-row: 10%;
   }
 
   button:hover {
-    background-color: lightgreen;
-    color: white;
-    border: 1px solid white;
+    background-color: rgba(144, 238, 144, 0.473);
   }
 </style>
 
