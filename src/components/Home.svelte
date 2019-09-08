@@ -73,8 +73,9 @@
   }
 
   img {
-    grid-row: auto-fit 40%;
-    max-height: 60vh;
+    grid-row: auto-fit;
+    max-height: 50vh;
+    max-width: 90%;
     justify-self: center;
     border-radius: 5px;
   }

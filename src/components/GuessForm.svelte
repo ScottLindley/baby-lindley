@@ -59,12 +59,15 @@
   .modal-shadow {
     position: fixed;
     width: 100%;
+    max-width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
   }
 
   .modal {
-    width: 90%;
+    width: 70%;
+    max-width: 100%;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -145,7 +148,22 @@
 
   @media (orientation: landscape) {
     .modal {
-      width: 25%;
+      width: 33%;
+    }
+  }
+
+  @media screen and (max-height: 500px) {
+    .modal {
+      width: 90%;
+      height: 70%;
+    }
+
+    label {
+      font-size: 1.2em;
+    }
+
+    #submit-btn {
+      font-size: 1.2em;
     }
   }
 </style>
