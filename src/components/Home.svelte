@@ -3,8 +3,10 @@
 
   import Confetti from "./Confetti.svelte";
   import Field from "./Field.svelte";
+  import Divider from "./Divider.svelte";
   import GuessButton from "./GuessButton.svelte";
   import GuessForm from "./GuessForm.svelte";
+
   import helpers from "../helpers/index.js";
 
   export let config;
@@ -37,7 +39,7 @@
 
 <style>
   h1 {
-    font-size: calc(1em + 1vh);
+    font-size: calc(0.7em + 1vh);
     margin: 1vh 0 1vh 0;
   }
 
@@ -52,7 +54,7 @@
     margin: 2vh 0;
   }
 
-  .field-container {
+  .status-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,19 +78,24 @@
 
   @media (orientation: landscape) {
     .home-container {
-      width: 60%;
+      width: 75%;
     }
   }
 </style>
 
 <div class="home-container">
-  <div class="field-container">
+  <div class="status-container">
     <h1>&#x1F476; Status &#x1F37C;</h1>
+    <Divider />
     <Field label="ETA" value={timeLeft} />
+    <Divider />
     <Field label="Name" value={config.name} />
+    <Divider />
     <Field label="Time of birth" value={config.timeOfBirth} />
+    <Divider />
     <Field label="Weight" value={config.weight} />
     {#if config.update}
+      <Divider />
       <Field label="Update" value={config.update} />
     {/if}
   </div>
