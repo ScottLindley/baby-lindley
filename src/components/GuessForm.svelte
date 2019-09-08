@@ -64,18 +64,19 @@
   }
 
   .modal {
+    width: 90%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #222222;
     background: lightyellow;
-    padding: 16px;
+    padding: 0.4em;
     border-radius: 5px;
   }
 
   form {
-    display: flex;
+    display: grid;
     flex-direction: column;
   }
 
@@ -86,7 +87,13 @@
   }
 
   .gender > label {
-    margin-right: 32px;
+    margin: 1vw;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .gender-input {
+    margin-left: 1vw;
   }
 
   .gender-input:hover {
@@ -94,37 +101,51 @@
   }
 
   .text-input {
-    margin-left: 8px;
     float: right;
+    font-size: inherit;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   input {
-    height: 24px;
-    margin-bottom: 16px;
+    height: 100%;
+  }
+
+  label {
+    font-size: 0.6em;
+    margin: 0.5vh 0;
+    display: flex;
+    flex-direction: column;
   }
 
   #submit-btn {
+    width: max-content;
+    justify-self: center;
     color: black;
     background-color: whitesmoke;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    font-size: 18px;
+    font-size: 0.5em;
     border: 1px solid black;
-    padding: 8px;
+    padding: 1vh;
+    margin-top: 2vh;
     cursor: pointer;
     height: auto;
   }
 
   #submit-btn:hover {
-    background-color: lightgreen;
-    color: white;
-    border: 1px solid white;
+    background-color: rgba(144, 238, 144, 0.473);
   }
 
-  @media only screen and (max-device-width: 600px) {
+  p {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  @media (orientation: landscape) {
     .modal {
-      width: 80%;
+      width: 25%;
     }
   }
 </style>
